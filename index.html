@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123b58">
+  <meta name="description" content="Demonstração de busca unificada de indicadores, gráficos e medicamentos do painel SCTIE. Dados ilustrativos.">
+  <title>Busca SCTIE | Demonstração</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#resultados">Ir para os resultados</a>
+  <header class="hero">
+    <div class="hero-decoration" aria-hidden="true"></div>
+    <div class="container hero-content">
+      <div class="masthead">
+        <div class="brand" aria-label="Busca SCTIE"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><circle cx="14" cy="14" r="8.5" stroke="currentColor" stroke-width="2.5"/><path d="m20.5 20.5 7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M9 14h10M14 9v10" stroke="currentColor" stroke-width="1.5" opacity=".65"/></svg></span><span>BUSCA <strong>SCTIE</strong></span></div>
+        <div class="demo-pill"><span class="status-dot"></span> Protótipo demonstrativo</div>
+      </div>
+      <div class="hero-copy">
+        <div class="eyebrow">INTELIGÊNCIA DA INFORMAÇÃO</div>
+        <h1>Encontre a informação certa.<br><span>Vá direto ao ponto.</span></h1>
+        <p>Localize indicadores, gráficos e medicamentos em uma única busca — por tema, programa ou departamento.</p>
+      </div>
+      <form id="search-form" class="search-form" role="search" autocomplete="off">
+        <label for="search-input" class="sr-only">Pesquise indicadores, gráficos ou medicamentos</label>
+        <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.8" cy="10.8" r="6.7" stroke="currentColor" stroke-width="1.9"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span>
+        <input id="search-input" name="q" type="search" value="insulina" placeholder="Ex.: insulina, CEAF, Farmácia Popular…" spellcheck="false">
+        <button type="submit" class="search-submit">Buscar <span aria-hidden="true">↗</span></button>
+      </form>
+      <div class="quick-searches">
+        <span>Buscas rápidas</span>
+        <button type="button" data-query="insulina">Insulina</button>
+        <button type="button" data-query="farmácia popular">Farmácia Popular</button>
+        <button type="button" data-query="CEAF">CEAF</button>
+        <button type="button" data-query="PDP">PDP</button>
+      </div>
+      <div class="filters" aria-label="Filtros de busca">
+        <div class="filter-row"><span class="filter-label">TIPO</span><div id="type-filters" class="filter-pills" role="group" aria-label="Filtrar por tipo"></div></div>
+        <div class="filter-row"><span class="filter-label">ÁREA</span><div id="department-filters" class="filter-pills" role="group" aria-label="Filtrar por departamento"></div></div>
+      </div>
+    </div>
+  </header>
+  <main id="resultados" class="container content">
+    <div class="results-toolbar">
+      <div><div class="section-kicker">CATÁLOGO DE CONSULTA</div><h2 id="result-heading" aria-live="polite">Resultados da busca</h2><p id="result-summary" aria-live="polite"></p></div>
+      <button id="clear-filters" class="reset-filters" type="button" hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4v6h6M20 20v-6h-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10a7.5 7.5 0 0 1 13-3M19 14a7.5 7.5 0 0 1-13 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Limpar filtros</button>
+    </div>
+    <div id="results-grid" class="results-grid" aria-live="polite"></div>
+    <section id="empty-state" class="empty-state" hidden>
+      <div class="empty-icon" aria-hidden="true">⌕</div>
+      <h3>Nenhum resultado encontrado</h3>
+      <p>Tente outro termo ou remova os filtros para ampliar a busca.</p>
+      <button id="empty-reset" type="button" class="secondary-button">Ver todo o catálogo</button>
+    </section>
+    <div class="info-banner">
+      <div class="info-symbol" aria-hidden="true">i</div>
+      <div><strong>Ambiente de demonstração</strong><p>Os registros e valores apresentados são ilustrativos e não constituem dados oficiais. A navegação para gráficos do Superset será habilitada quando as URLs e os filtros reais forem configurados.</p></div>
+    </div>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><span><strong>BUSCA SCTIE</strong> <span class="footer-sep">/</span> Protótipo de interface</span><span>Concebido para integração futura com o Painel SCTIE · Modelo 03</span></div></footer>
+  <dialog id="detail-dialog" aria-labelledby="detail-title" class="detail-dialog">
+    <div class="modal-header"><span class="modal-topline">PRÉVIA DE NAVEGAÇÃO</span><button id="close-dialog" class="icon-button" type="button" aria-label="Fechar janela">×</button></div>
+    <div id="detail-content"></div>
+  </dialog>
+</body>
+</html>
